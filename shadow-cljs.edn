@@ -1,0 +1,13 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src/dev"
+  "src/main"
+  "src/test"]
+
+ :dependencies
+ [[fulcrologic/fulcro "2.8.1"]]
+
+ :builds
+ {:app {:target :npm-module
+        :output-dir "out"
+        :entries [test.app]}}}
