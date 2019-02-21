@@ -3,6 +3,7 @@
     "name": "hello-world",
     "slug": "fulcro-expo",
     "privacy": "public",
+    "entryPoint":"./index.js",
     "sdkVersion": "32.0.0",
     "platforms": [
       "ios",

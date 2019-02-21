@@ -11,3 +11,5 @@ out/
 pom.xml
 .idea/
 *.iml
+cljs-dev/
+index.js

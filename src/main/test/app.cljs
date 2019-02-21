@@ -5,6 +5,7 @@
     ["react" :as r]
     [fulcro.client :as fc]
     [fulcro.client.primitives :as fp :refer (defsc)]
+    [shadow.expo :as expo]
     ))
 
 (defonce root-ref (atom nil))
@@ -27,22 +28,15 @@
   []
   (reset! app-ref (fc/mount @app-ref Root :i-got-no-dom-node)))
 
-(defn init [root-component]
-  (reset! root-ref root-component)
-
+(defn init []
   (let [app
         (fc/make-fulcro-client
           {:client-did-mount
            (fn [{:keys [reconciler] :as app}])
 
            :reconciler-options
-           {:root-render
-            (fn [node _]
-              (.swapRoot root-component node))
-
-            :root-unmount
-            (fn [node]
-              (js/console.log "root-unmount" node))}})]
+           {:root-render expo/render-root
+            :root-unmount (fn [node])}})]
 
     (reset! app-ref app)
     (start)))
