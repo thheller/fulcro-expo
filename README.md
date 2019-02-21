@@ -20,3 +20,5 @@ You should disable the `expo` live reload stuff and let `shadow-cljs` handle tha
 Source maps don't seem to work properly. `metro` propably doesn't read input source maps when converting sources as things are correctly mapped to the source .js files but not their sources.
 
 Initial load in dev is quite slow since `metro` processes the generated `.js` files.
+
+Included a custom `fulcro.client.mutations` ns since the release otherwise contains one that requires `cljs.loader` but never uses it. `cljs.loader` doesn't seem to load properly in `react-native`.
