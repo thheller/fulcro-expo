@@ -11,6 +11,6 @@
  {:app
   {:target :react-native
    :init-fn test.app/init
-   :output-to "index.js"
+   :output-dir "app"
    :devtools {:autoload true
               :preloads [shadow.expo.keep-awake]}}}}
