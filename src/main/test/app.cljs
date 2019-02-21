@@ -2,8 +2,9 @@
   (:require
     ["expo" :as ex]
     ["react-native" :as rn]
-    ["react" :as react]
-    [reagent.core :as r]
+    ["react" :as r]
+    [fulcro.client :as fc]
+    [fulcro.client.primitives :as fp :refer (defsc)]
     [shadow.expo :as expo]
     ))
 
@@ -12,6 +13,10 @@
 ;; must use path relative to :output-dir
 
 (defonce splash-img (js/require "../assets/shadow-cljs.png"))
+
+(defonce root-ref (atom nil))
+
+(defonce app-ref (atom nil))
 
 (def styles
   ^js (-> {:container
@@ -26,16 +31,34 @@
           (clj->js)
           (rn/StyleSheet.create)))
 
-(defn root []
-  [:> rn/View {:style (.-container styles)}
-   [:> rn/Text {:style (.-title styles)} "Hello!"]
-   [:> rn/Image {:source splash-img :style {:width 200 :height 200}}]])
+(defsc Root [this props]
+  {:initial-state
+   (fn [p]
+     {::foo "hello world"})
+
+   :query
+   [::foo]}
+
+  (r/createElement rn/View #js {:style (.-container styles)}
+    (r/createElement rn/Text #js {:style (.-title styles)} "Hello!")
+    (r/createElement rn/Image #js {:source splash-img :style #js {:width 200 :height 200}})
+    (r/createElement rn/Text nil (pr-str props))))
 
 (defn start
   {:dev/after-load true}
   []
-  (expo/render-root (r/as-element [root])))
+  (reset! app-ref (fc/mount @app-ref Root :i-got-no-dom-node)))
 
 (defn init []
-  (start))
+  (let [app
+        (fc/make-fulcro-client
+          {:client-did-mount
+           (fn [{:keys [reconciler] :as app}])
+
+           :reconciler-options
+           {:root-render expo/render-root
+            :root-unmount (fn [node])}})]
+
+    (reset! app-ref app)
+    (start)))
 

@@ -5,7 +5,7 @@
   "src/test"]
 
  :dependencies
- [[reagent "0.8.1"]]
+ [[fulcrologic/fulcro "2.8.1"]]
 
  :builds
  {:app
