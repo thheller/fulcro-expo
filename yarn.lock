@@ -4209,7 +4209,7 @@ react-native-gesture-handler@~1.0.14:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
-"react-native-maps@github:expo/react-native-maps#v0.22.1-exp.0":
+react-native-maps@expo/react-native-maps#v0.22.1-exp.0:
   version "0.22.1"
   resolved "https://codeload.github.com/expo/react-native-maps/tar.gz/e6f98ff7272e5d0a7fe974a41f28593af2d77bb2"
 
@@ -4642,9 +4642,9 @@ shadow-cljs-jar@1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/shadow-cljs-jar/-/shadow-cljs-jar-1.3.0.tgz#e25c4fa57c0b405096250884b164c112654a06a3"
 
-shadow-cljs@^2.8.8:
-  version "2.8.8"
-  resolved "https://registry.yarnpkg.com/shadow-cljs/-/shadow-cljs-2.8.8.tgz#7f373881266266559f41828a67056e8123e251e4"
+shadow-cljs@^2.8.12:
+  version "2.8.11"
+  resolved "https://registry.yarnpkg.com/shadow-cljs/-/shadow-cljs-2.8.11.tgz#087c647e77b9c97e211e4f392c940e6378959f45"
   dependencies:
     mkdirp "^0.5.1"
     node-libs-browser "^2.0.0"
